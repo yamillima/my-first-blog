@@ -1,4 +1,6 @@
 from django.conf.urls import include, url
+from django.conf.urls.static import static
+from django.conf import settings
 from . import views
 
 urlpatterns = [
@@ -13,4 +15,4 @@ urlpatterns = [
     url(r'^post/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),
     url(r'^post/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
     url(r'^costumers/$', views.costumers_list, name='costumers_list'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
