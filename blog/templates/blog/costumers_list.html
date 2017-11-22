@@ -1,0 +1,16 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div>
+      <img src="http://www.blackbuttmedical.com.au/Resources/Pictures/general_275x275__cropped_empty-user.jpg" width="200" />
+      Cliente de Ejemplo 1
+    </div>
+    {% for costumer in costumers %}
+    <div>
+      <img src="{{ costumer.photo.url }}" alt="image" width="200" />
+      {{ costumer.name }}
+    </div>
+    {% endfor %}
+  </body>
+</html>
