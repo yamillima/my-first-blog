@@ -6,7 +6,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=200)
     foto = models.ImageField(upload_to='tienda/productos')
     precio = models.IntegerField()
-    descripción = models.TextField(blank=True)
+    descripcion = models.TextField(blank=True)
     para_mujer = models.BooleanField(default=True)
     para_hombre = models.BooleanField(default=False)
     para_niños = models.BooleanField(default=False)
