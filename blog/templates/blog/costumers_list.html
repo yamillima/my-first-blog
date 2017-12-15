@@ -1,16 +1,26 @@
-<html>
+<!doctype html>
+<html lang="eng">
   <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   </head>
   <body>
-    <div>
-      <img src="http://www.blackbuttmedical.com.au/Resources/Pictures/general_275x275__cropped_empty-user.jpg" width="200" />
-      Cliente de Ejemplo 1
+    <div class="container">
+      <main role="main">
+        <div class="row">
+          {% for costumer in costumers %}
+          <div class="col-lg-4">
+            <img src="{{ costumer.photo.url }}" alt="image" height="200" />
+            {{ costumer.name }}
+          </div>
+          {% endfor %}
+        </div>
+      </main>
     </div>
-    {% for costumer in costumers %}
-    <div>
-      <img src="{{ costumer.photo.url }}" alt="image" width="200" />
-      {{ costumer.name }}
-    </div>
-    {% endfor %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>
 </html>

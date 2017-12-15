@@ -1,0 +1,43 @@
+{% extends 'tienda/base.html' %}
+
+{% block link_1 %}{% endblock %}
+{% block link_2 %}{% endblock %}
+{% block link_3 %}{% endblock %}
+{% block link_4 %}active{% endblock %}
+
+{% block content %}
+<!-- header -->
+{% load staticfiles %}
+<!-- botonera -->
+<div class="col-lg-3" style="margin-top: 70px">
+  <div class="list-group">
+      <a href="{% url 'tienda:dama' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Mujer</a>
+      <a href="{% url 'tienda:hombre' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Hombre</a>
+      <a href="{% url 'tienda:niños' %}" class="list-group-item active" style="border: none; background-color: darkorange; font-weight: bold">Para Niños</a>
+  </div>
+</div>
+<div class="col-lg-9" style="margin-top: 20px">
+  <div class="row">
+    <!-- product cards -->
+  {% for producto in object_list %}
+        <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <a href="#"><img class="card-img-top" src="{{ producto.foto.url }}" alt="imagen no disponible"></a>
+                    <div class="card-body">
+                      <h4 class="card-title">
+                        <a href="#" style="color: darkorange">{{ producto.nombre }}</a>
+                      </h4>
+                      <h5>$ {{ producto.precio_millar }}</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                      <center>
+                        <a href="#" class="btn btn-primary btn-lg" style="background-color: darkorange; border: none;">COMPRAR</a>
+                      </center>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                  </div>
+        </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

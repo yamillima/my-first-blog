@@ -1,0 +1,66 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="eng">
+  <head>
+    <title style="color: white">Gugif: Regalos a domicilio</title>
+    <meta name="theme-color" content="darkorange" />
+    <link rel="shortcut icon" href="{% static 'shortcuticon.png' %}"/>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body style="background-color: whitesmoke;">
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg  navbar-dark fixed-top" style="padding-top: 0px; padding-bottom: 0px; background-color: darkorange">
+      <div class="container" style="background-color: darkorange;">
+        <a class="navbar-brand" href="{% url 'tienda:index' %}"><img src="{% static 'shortcuticon.png' %}" width="40" /> Gugif - Regalos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item {% block link_1 %}{% endblock %}">
+              <a class="nav-link" href="{% url 'tienda:index' %}">Inicio</a>
+                <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item {% block link_2 %}{% endblock %}">
+              <a class="nav-link" href="{% url 'tienda:dama' %}">Para Mujer</a>
+            </li>
+            <li class="nav-item {% block link_3 %}{% endblock %}">
+              <a class="nav-link" href="{% url 'tienda:hombre' %}">Para Hombre</a>
+            </li>
+            <li class="nav-item {% block link_4 %}{% endblock %}">
+              <a class="nav-link" href="{% url 'tienda:niños' %}">Para Niños</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- end navigation bar -->
+    <div class="container">
+        <div class="row">
+          {% block content %}
+          {% endblock %}
+        </div>
+    </div>
+    <!-- footer -->
+    <footer class="py-5" style="background-color: darkorange">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 2017 Gugif</p>
+      </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <a href="#">
+    <button style="color: white; background-color: darkorange; bottom: 2px; right: 2px; position: fixed; height: 40px">
+      DAR MI OPINIÓN
+    </button>
+    </a>
+  </body>
+</html>
