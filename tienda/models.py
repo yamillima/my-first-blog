@@ -13,9 +13,6 @@ class Producto(models.Model):
     abierto_desde_las = models.TimeField()
     cierra_a_las = models.TimeField()
 
-    def __str__(self):
-        return self.nombre
-
     def precio_millar(self):
         return '{:,}'.format(self.precio).replace(',', ' ')
 
