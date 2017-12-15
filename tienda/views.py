@@ -46,7 +46,7 @@ class ChicoView(generic.ListView):
         chico = Chico.objects.create()
         chico.fecha = now
         chico.save()
-        return Producto.objects.filter(para_niños=True)
+        return Producto.objects.filter(para_chicos=True)
 
 class ComprarView(generic.ListView):
     template_name = 'tienda/comprar.html'
