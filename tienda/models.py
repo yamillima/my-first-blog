@@ -13,15 +13,6 @@ class Producto(models.Model):
     abierto_desde_las = models.TimeField()
     cierra_a_las = models.TimeField()
 
-    def precio_millar(self):
-        return '{:,}'.format(self.precio).replace(',', ' ')
-
-    def estado(self):
-        if self.abierto_desde_las < datetime.datetime.now().time() < self.cierra_a_las:
-            return "ABIERTO"
-        else:
-            return "CERRADO"
-
 class Visita(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
