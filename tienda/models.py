@@ -13,6 +13,9 @@ class Producto(models.Model):
     abierto_desde_las = models.TimeField()
     cierra_a_las = models.TimeField()
 
+    def precio_millar(self):
+        return self.precio
+
 class Visita(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
