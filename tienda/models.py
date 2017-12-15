@@ -28,23 +28,11 @@ class Producto(models.Model):
 class Visita(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
-    def __str__(self):
-        return self.fecha
-
 class Dama(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
-
-    def __str__(self):
-        return self.fecha
 
 class Hombre(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
-    def __str__(self):
-        return self.fecha
-
 class Chico(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
-
-    def __str__(self):
-        return self.fecha
