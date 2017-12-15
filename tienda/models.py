@@ -9,7 +9,7 @@ class Producto(models.Model):
     descripcion = models.TextField(blank=True)
     para_mujer = models.BooleanField(default=True)
     para_hombre = models.BooleanField(default=False)
-    para_niños = models.BooleanField(default=False)
+    para_chicos = models.BooleanField(default=False)
     abierto_desde_las = models.TimeField()
     cierra_a_las = models.TimeField()
 
