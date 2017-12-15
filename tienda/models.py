@@ -29,22 +29,22 @@ class Visita(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
     def __str__(self):
-        return timezone.localtime(self.fecha).strftime('%b. %d de %Y - %I:%M:%S %p')
+        return self.fecha
 
 class Dama(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
     def __str__(self):
-        return timezone.localtime(self.fecha).strftime('%b. %d de %Y - %I:%M:%S %p')
+        return self.fecha
 
 class Hombre(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
     def __str__(self):
-        return timezone.localtime(self.fecha).strftime('%b. %d de %Y - %I:%M:%S %p')
+        return self.fecha
 
 class Chico(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
 
     def __str__(self):
-        return timezone.localtime(self.fecha).strftime('%b. %d de %Y - %I:%M:%S %p')
+        return self.fecha
