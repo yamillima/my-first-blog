@@ -18,9 +18,9 @@
 <!-- botonera -->
 <div class="col-lg-3" style="padding-bottom: 20px">
   <div class="list-group">
-      <a href="{% url 'tienda:dama' %}" class="list-group-item active" style="background-color: darkorange; border: none; font-weight: bold">Para Mujer</a>
-      <a href="{% url 'tienda:hombre' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Hombre</a>
-      <a href="{% url 'tienda:chicos' %}" class="list-group-item" style="color: darkorange;  font-weight: bold">Para Niños</a>
+      <a href="{% url 'dama' %}" class="list-group-item active" style="background-color: darkorange; border: none; font-weight: bold">Para Mujer</a>
+      <a href="{% url 'hombre' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Hombre</a>
+      <a href="{% url 'chicos' %}" class="list-group-item" style="color: darkorange;  font-weight: bold">Para Niños</a>
   </div>
 </div>
 <div class="col-lg-9"">
@@ -36,11 +36,11 @@
                         <a style="color: darkorange">{{ producto.nombre }}</a>
                       </h4>
                       <h5>$ {{ producto.precio_millar }}</h5>
-                      <p class="card-text">{{ producto.descripción }}</p>
+                      <p class="card-text">{{ producto.descripcion }}</p>
                     </div>
                     <div class="card-footer" style="background-color: white;">
                       <center>
-                        <a href="{% url 'tienda:comprar' %}" class="btn btn-primary btn-lg" style="background-color: darkorange; border: none;">COMPRAR</a>
+                        <a href="{% url 'comprar' %}" class="btn btn-primary btn-lg" style="background-color: darkorange; border: none;">COMPRAR</a>
                       </center>
                     </div>
                   </div>

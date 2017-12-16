@@ -16,24 +16,24 @@
     <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg  navbar-dark fixed-top" style="padding-top: 0px; padding-bottom: 0px; background-color: darkorange">
       <div class="container" style="background-color: darkorange;">
-        <a class="navbar-brand" href="{% url 'tienda:index' %}"><img src="{% static 'shortcuticon.png' %}" width="40" /> Gugif - Regalos</a>
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'shortcuticon.png' %}" width="40" /> Gugif - Regalos</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item {% block link_1 %}{% endblock %}">
-              <a class="nav-link" href="{% url 'tienda:index' %}">Inicio</a>
+              <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                 <span class="sr-only">(current)</span>
             </li>
             <li class="nav-item {% block link_2 %}{% endblock %}">
-              <a class="nav-link" href="{% url 'tienda:dama' %}">Para Mujer</a>
+              <a class="nav-link" href="{% url 'dama' %}">Para Mujer</a>
             </li>
             <li class="nav-item {% block link_3 %}{% endblock %}">
-              <a class="nav-link" href="{% url 'tienda:hombre' %}">Para Hombre</a>
+              <a class="nav-link" href="{% url 'hombre' %}">Para Hombre</a>
             </li>
             <li class="nav-item {% block link_4 %}{% endblock %}">
-              <a class="nav-link" href="{% url 'tienda:chicos' %}">Para Niños</a>
+              <a class="nav-link" href="{% url 'chicos' %}">Para Niños</a>
             </li>
           </ul>
         </div>

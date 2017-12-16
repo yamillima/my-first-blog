@@ -14,7 +14,7 @@ class Producto(models.Model):
     cierra_a_las = models.TimeField()
 
     def precio_millar(self):
-        return self.precio
+        return "{:,}".format(self.precio).replace(',','.')
 
 class Visita(models.Model):
     fecha = models.DateTimeField(default=datetime.datetime.now())
