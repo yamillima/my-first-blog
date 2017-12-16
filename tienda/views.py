@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Producto, Visita, Dama, Hombre, Chico
+from .models import Producto, Visita, Dama, Hombre, Chico, Compra
 import datetime
 
 class IndexView(generic.ListView):
@@ -52,4 +52,8 @@ class ComprarView(generic.ListView):
     template_name = 'tienda/comprar.html'
 
     def get_queryset(self):
+        now = datetime.datetime.now()
+        compra = Compra.objects.create()
+        compra.fecha = now
+        compra.save()
         return Producto.objects.all()

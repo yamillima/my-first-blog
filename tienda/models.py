@@ -42,3 +42,9 @@ class Chico(models.Model):
 
     def __str__(self):
         return timezone.localtime(self.fecha).strftime('%b %d de %Y - %I:%M:%S %p')
+
+class Compra(models.Model):
+    fecha = models.DateTimeField(default=datetime.datetime.now())
+
+    def __str__(self):
+        return timezone.localtime(self.fecha).strftime('%b %d de %Y - %I:%M:%S %p')
