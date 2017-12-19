@@ -1,6 +1,6 @@
 from django.views import generic
 from .models import Producto, Visita, Dama, Hombre, Chico, Compra, ComprarClick
-from .forms import CompraForm
+from .forms import CompraForm, ComentarioForm
 from django.utils import timezone
 from django.shortcuts import redirect
 from django.http import HttpResponse
@@ -70,6 +70,19 @@ class ComprarView(generic.edit.FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+class ComentarioView(generic.edit.FormView):
+    template_name = 'tienda/opiniones.html'
+    form_class = ComentarioForm
+    success_url = 'gracias'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+class GraciasView(generic.ListView):
+    template_name = 'tienda/gracias.html'
+    queryset = Producto.objects.all()
 
 class PedidoView(generic.ListView):
     template_name = 'tienda/pedido.html'

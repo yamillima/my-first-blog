@@ -44,11 +44,21 @@ class Chico(models.Model):
     def __str__(self):
         return timezone.localtime(self.fecha).strftime('%b %d de %Y - %I:%M:%S %p')
 
+class Comentario(models.Model):
+    fecha = models.DateTimeField(default=timezone.now)
+    nombre = models.CharField(max_length=200)
+    correo_electronico = models.CharField(max_length=200)
+    comentario = models.TextField()
+
+    def __str__(self):
+        return timezone.localtime(self.fecha).strftime('%b %d de %Y - %I:%M:%S %p')
+
 class Compra(models.Model):
     fecha = models.DateTimeField(default=timezone.now)
     regalo = models.CharField(max_length=200)
     precio = models.CharField(max_length=200)
     telefono_del_comprador = models.CharField(max_length=200)
+    correo_electronico = models.CharField(max_length=200)
     nombre_del_comprador = models.CharField(max_length=200)
     nombre_del_destinatario = models.CharField(max_length=200)
     direccion_de_entrega = models.CharField(max_length=200)

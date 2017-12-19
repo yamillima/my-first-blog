@@ -36,6 +36,13 @@ Teléfono del comprador:<br>
 {% endif %}
 </p>
 <p>
+Correo Electrónico:<br>
+{{ form.correo_electronico }}
+{% if form.correo_electronico.errors%}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<p>
 Nombre del comprador:<br>
 {{ form.nombre_del_comprador }}
 {% if form.nombre_del_comprador.errors %}
