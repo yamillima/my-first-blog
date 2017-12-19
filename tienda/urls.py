@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^gugif/mujer$', views.DamaView.as_view(), name='dama'),
     url(r'^gugif/hombre$', views.HombreView.as_view(), name='hombre'),
     url(r'^gugif/chicos$', views.ChicoView.as_view(), name='chicos'),
-    url(r'^gugif/comprar$', views.ComprarView.as_view(), name='comprar'),
+    url(r'^gugif/(?P<pk>[0-9]+)$', views.ComprarView.as_view(), name='comprarclick'),
+    url(r'^gugif/pedido$', views.PedidoView.as_view(), name='pedido'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

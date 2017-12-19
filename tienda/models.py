@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django import forms
 import datetime
 
 class Producto(models.Model):
@@ -44,7 +45,22 @@ class Chico(models.Model):
         return timezone.localtime(self.fecha).strftime('%b %d de %Y - %I:%M:%S %p')
 
 class Compra(models.Model):
-    fecha = models.DateTimeField(default=datetime.datetime.now())
+    fecha = models.DateTimeField(default=timezone.now)
+    regalo = models.CharField(max_length=200)
+    precio = models.CharField(max_length=200)
+    telefono_del_comprador = models.CharField(max_length=200)
+    nombre_del_comprador = models.CharField(max_length=200)
+    nombre_del_destinatario = models.CharField(max_length=200)
+    direccion_de_entrega = models.CharField(max_length=200)
+    fecha_de_entrega = models.DateField()
+    hora_de_entrega = models.TimeField()
 
     def __str__(self):
         return timezone.localtime(self.fecha).strftime('%b %d de %Y - %I:%M:%S %p')
+
+class ComprarClick(models.Model):
+    fecha = models.DateTimeField(default=timezone.now)
+    producto = models.CharField(max_length=200, default='sin definir')
+
+    def __str__(self):
+        return timezone.localtime(self.fecha).strftime('%b %d de %Y - %I:%M:%S %p') + ' - ' + self.producto

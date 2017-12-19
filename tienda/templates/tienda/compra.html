@@ -1,0 +1,80 @@
+{% extends 'tienda/base.html' %}
+
+{% block link_1 %}{% endblock %}
+{% block link_2 %}{% endblock %}
+{% block link_3 %}{% endblock %}
+{% block link_4 %}{% endblock %}
+
+{% block content %}
+<!-- header -->
+{% load staticfiles %}
+<header class="jumbotron my-4" style="width: 100%; height: 0; background-color: whitesmoke; color: darkorange; text-align: center;">
+  <h3>Datos de Compra</h3>
+</header>
+<div style="background-color: white; padding: 30px; margin: auto; margin-bottom: 30px; color: darkorange; font-weight: bold; border: 2px outset;">
+<form method="POST" class="post-form">{% csrf_token %}
+<p>
+Regalo:<br>
+{{ form.regalo }}
+{% if form.regalo.errors %}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<p>
+Precio:<br>
+{{ form.precio }}
+{% if form.precio.errors %}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<hr />
+<p>
+Teléfono del comprador:<br>
+{{ form.telefono_del_comprador }}
+{% if form.telefono_del_comprador.errors%}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<p>
+Nombre del comprador:<br>
+{{ form.nombre_del_comprador }}
+{% if form.nombre_del_comprador.errors %}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<hr />
+<p>
+Nombre del destinatario:<br>
+{{ form.nombre_del_destinatario }}
+{% if form.nombre_del_destinatario.errors %}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<p>
+Dirección de entrega:<br>
+{{ form.direccion_de_entrega }}
+{% if form.direccion_de_entrega.errors %}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+<i style="font-size: 12px; color: gray;">*Entregas solo en Neiva</i>
+</p>
+<p>
+Fecha de entrega:<br>
+{{ form.fecha_de_entrega }}
+{% if form.fecha_de_entrega.errors %}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<p>
+Hora de entrega:<br>
+{{ form.hora_de_entrega }}
+{% if form.hora_de_entrega.errors %}
+  <i style="font-size: 12px; color: red; align: right">*Dato requerido</i>
+{% endif %}
+</p>
+<p style="text-align: center">
+<button type="submit" class="save btn btn-default" style="background-color: darkorange; color: white">COMPRAR</button>
+</p>
+</form>
+</div>
+{% endblock %}

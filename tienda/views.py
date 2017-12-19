@@ -1,5 +1,9 @@
 from django.views import generic
-from .models import Producto, Visita, Dama, Hombre, Chico, Compra
+from .models import Producto, Visita, Dama, Hombre, Chico, Compra, ComprarClick
+from .forms import CompraForm
+from django.utils import timezone
+from django.shortcuts import redirect
+from django.http import HttpResponse
 import datetime
 
 class IndexView(generic.ListView):
@@ -48,12 +52,25 @@ class ChicoView(generic.ListView):
         chico.save()
         return Producto.objects.filter(para_chicos=True)
 
-class ComprarView(generic.ListView):
-    template_name = 'tienda/comprar.html'
+class ComprarView(generic.edit.FormView):
+    template_name = 'tienda/compra.html'
+    form_class = CompraForm
+    success_url = 'pedido'
 
-    def get_queryset(self):
-        now = datetime.datetime.now()
-        compra = Compra.objects.create()
-        compra.fecha = now
-        compra.save()
-        return Producto.objects.all()
+    def get_initial(self, **kwargs):
+        initial = super(ComprarView, self).get_initial()
+        initial['regalo'] = Producto.objects.get(pk=self.kwargs['pk']).nombre
+        initial['precio'] = Producto.objects.get(pk=self.kwargs['pk']).precio_millar
+        comprarclick = ComprarClick.objects.create()
+        comprarclick.fecha = timezone.now()
+        comprarclick.producto = Producto.objects.get(pk=self.kwargs['pk']).nombre
+        comprarclick.save()
+        return initial
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+class PedidoView(generic.ListView):
+    template_name = 'tienda/pedido.html'
+    queryset = Producto.objects.all()

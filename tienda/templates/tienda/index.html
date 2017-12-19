@@ -8,7 +8,7 @@
 {% block content %}
 <!-- header -->
 {% load staticfiles %}
-<header class="jumbotron my-4"  style="width: 100%; background: url({% static 'portada.jpg' %})">
+<header class="jumbotron my-4"  style="width: 100%; background: url({% static 'portada.jpg' %});">
 
         <h1 class="display-3" style="color: white; font-size:71px">Hay muchas formas <br>de decir GRACIAS...</h1>
         <!--<p class="lead" style="color: white;">
@@ -16,14 +16,14 @@
         <br><a href="#" class="btn btn-primary btn-lg" style="background-color: darkorange; border: none;">CONTAR LA MÍA</a>
 </header>
 <!-- botonera -->
-<div class="col-lg-3" style="padding-bottom: 20px">
+<div class="col-lg-3"  style="padding-bottom: 20px">
   <div class="list-group">
       <a href="{% url 'dama' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Mujer</a>
       <a href="{% url 'hombre' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Hombre</a>
       <a href="{% url 'chicos' %}" class="list-group-item" style="color: darkorange;  font-weight: bold">Para Niños</a>
   </div>
 </div>
-<div class="col-lg-9"">
+<div class="col-lg-9">
   <div class="row">
     <!-- product cards -->
   {% for producto in object_list %}
@@ -40,7 +40,7 @@
                     </div>
                     <div class="card-footer" style="background-color: white;">
                       <center>
-                        <a href="{% url 'comprar' %}" class="btn btn-primary btn-lg" style="background-color: darkorange; border: none;">COMPRAR</a>
+                        <a href="{% url 'comprarclick' producto.pk %}" class="btn btn-primary btn-lg" style="background-color: darkorange; border: none;">COMPRAR</a>
                       </center>
                     </div>
                   </div>
