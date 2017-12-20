@@ -8,15 +8,17 @@
 {% block content %}
 <!-- header -->
 {% load staticfiles %}
+<header class="my-4" style="width: 100%; ">
+</header>
 <!-- botonera -->
-<div class="col-lg-3" style="margin-top: 70px">
+<div class="col-lg-3" style="padding: 1.5rem 1rem; padding-bottom: 0">
   <div class="list-group">
       <a href="{% url 'dama' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Mujer</a>
       <a href="{% url 'hombre' %}" class="list-group-item" style="color: darkorange; font-weight: bold">Para Hombre</a>
       <a href="{% url 'chicos' %}" class="list-group-item active" style="border: none; background-color: darkorange; font-weight: bold">Para Niños</a>
   </div>
 </div>
-<div class="col-lg-9" style="margin-top: 20px">
+<div class="col-lg-9" style="padding: 1.5rem 1rem">
   <div class="row">
     <!-- product cards -->
   {% for producto in object_list %}
