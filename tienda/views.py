@@ -6,13 +6,13 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 import datetime
 
-class IndexView(generic.ListView):
+class BackDoorView(generic.ListView):
     template_name = 'tienda/index.html'
 
     def get_queryset(self):
         return Producto.objects.all()
 
-class FacebookView(generic.ListView):
+class IndexView(generic.ListView):
     template_name = 'tienda/index.html'
 
     def get_queryset(self):
