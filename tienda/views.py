@@ -4,6 +4,7 @@ from .forms import CompraForm, ComentarioForm
 from django.utils import timezone
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.core.mail import send_mail
 import datetime
 
 class BackDoorView(generic.ListView):
@@ -67,7 +68,17 @@ class ComprarView(generic.edit.FormView):
         comprarclick.save()
         return initial
 
-    def form_valid(self, form):
+    def form_valid(self, form, **kwargs):
+        comprador = form.cleaned_data['nombre_del_comprador']
+        telefono = form.cleaned_data['telefono_del_comprador']
+        precio = form.cleaned_data['precio']
+        destinatario = form.cleaned_data['nombre_del_destinatario']
+        direccion = form.cleaned_data['direccion_de_entrega']
+        fecha = form.cleaned_data['fecha_de_entrega'].strftime('%b %d de %Y')
+        hora = form.cleaned_data['hora_de_entrega'].strftime('%I:%M %p')
+        mail_to = Producto.objects.get(pk=self.kwargs['pk']).vendedor.email
+        msg = 'Vendiste -' + Producto.objects.get(pk=self.kwargs['pk']).nombre + '- en Gugif. Precio: ' + precio +  '. Comprador: ' + comprador + '. Teléfono: ' + telefono + '. Destinatario: ' + destinatario + '. Dirección de entrega: ' + direccion + '. Fecha y hora de entrega: ' + fecha + ' a las ' + hora
+        send_mail('de Gugif: ¡Tienes una venta!', msg, 'yamilandreslima@gmail.com', [mail_to])
         form.save()
         return super().form_valid(form)
 

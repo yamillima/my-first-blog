@@ -3,7 +3,16 @@ from django.utils import timezone
 from django import forms
 import datetime
 
+class Tendero(models.Model):
+    nombre = models.CharField(max_length=200)
+    email = models.EmailField()
+    telefono = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.nombre
+
 class Producto(models.Model):
+    vendedor = models.ForeignKey('tienda.Tendero', blank=True)
     nombre = models.CharField(max_length=200)
     foto = models.ImageField(upload_to='tienda/productos')
     precio = models.IntegerField()

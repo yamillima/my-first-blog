@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     'tienda',
 ]
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'yamilandreslima@gmail.com'
+EMAIL_HOST_PASSWORD = 'Y1.075.228.142'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
