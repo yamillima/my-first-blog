@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Producto, Visita, Dama, Hombre, Chico, Compra, ComprarClick
+from .models import Tendero, Producto, Visita, Dama, Hombre, Chico, Compra, ComprarClick
 from .forms import CompraForm, ComentarioForm
 from django.utils import timezone
 from django.shortcuts import redirect
@@ -11,7 +11,7 @@ class BackDoorView(generic.ListView):
     template_name = 'tienda/index.html'
 
     def get_queryset(self):
-        return Producto.objects.all()
+        return Tendero.objects.all()
 
 class IndexView(generic.ListView):
     template_name = 'tienda/index.html'
@@ -21,7 +21,7 @@ class IndexView(generic.ListView):
         visita = Visita.objects.create()
         visita.fecha = now
         visita.save()
-        return Producto.objects.all()
+        return Tendero.objects.all()
 
 class DamaView(generic.ListView):
     template_name = 'tienda/mujer.html'
@@ -31,7 +31,7 @@ class DamaView(generic.ListView):
         dama = Dama.objects.create()
         dama.fecha = now
         dama.save()
-        return Producto.objects.filter(para_mujer=True)
+        return Tendero.objects.all()
 
 class HombreView(generic.ListView):
     template_name = 'tienda/hombre.html'
@@ -41,7 +41,7 @@ class HombreView(generic.ListView):
         hombre = Hombre.objects.create()
         hombre.fecha = now
         hombre.save()
-        return Producto.objects.filter(para_hombre=True)
+        return Tendero.objects.all()
 
 class ChicoView(generic.ListView):
     template_name = 'tienda/chicos.html'
@@ -51,7 +51,7 @@ class ChicoView(generic.ListView):
         chico = Chico.objects.create()
         chico.fecha = now
         chico.save()
-        return Producto.objects.filter(para_chicos=True)
+        return Tendero.objects.all()
 
 class ComprarView(generic.edit.FormView):
     template_name = 'tienda/compra.html'
@@ -78,7 +78,8 @@ class ComprarView(generic.edit.FormView):
         hora = form.cleaned_data['hora_de_entrega'].strftime('%I:%M %p')
         mail_to = Producto.objects.get(pk=self.kwargs['pk']).vendedor.email
         msg = 'Vendiste -' + Producto.objects.get(pk=self.kwargs['pk']).nombre + '- en Gugif. Precio: ' + precio +  '. Comprador: ' + comprador + '. Teléfono: ' + telefono + '. Destinatario: ' + destinatario + '. Dirección de entrega: ' + direccion + '. Fecha y hora de entrega: ' + fecha + ' a las ' + hora
-        send_mail('¡Tienes una venta!', msg, 'Gugif <info@gugif.com>', [mail_to])
+        html_message = 'Vendiste <b>' + Producto.objects.get(pk=self.kwargs['pk']).nombre + '</b> en Gugif. <br><b>Precio:</b> ' + precio +  '. <br><b>Comprador:</b> ' + comprador + '. <br><b>Teléfono:</b> ' + telefono + '. <br><b>Destinatario:</b> ' + destinatario + '. <br><b>Dirección de entrega:</b> ' + direccion + '. <br><b>Fecha y hora de entrega:</b> ' + fecha + ' a las ' + hora
+        send_mail('¡Tienes una venta!', msg, 'Gugif <info@gugif.com>', [mail_to], html_message=html_message)
         form.save()
         return super().form_valid(form)
 

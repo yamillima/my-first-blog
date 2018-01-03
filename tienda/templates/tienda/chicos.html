@@ -21,11 +21,14 @@
 <div class="col-lg-9" style="padding: 1.5rem 1rem">
   <div class="row">
     <!-- product cards -->
-  {% for producto in object_list %}
-  <div class="col-lg-4 col-md-6 mb-4">
+    {% for tendero in object_list %}
+      {% for producto in tendero.producto_set.all %}
+        {% if producto.para_chicos %}
+          <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a><img class="card-img-top" src="{{ producto.foto.url }}" alt="imagen no disponible"></a>
               <div class="card-body">
+                <i>{{ producto.vendedor.nombre }}</i>
                 <h4 class="card-title">
                   <a style="color: darkorange">{{ producto.nombre }}</a>
                 </h4>
@@ -38,8 +41,10 @@
                 </center>
               </div>
             </div>
-  </div>
-  {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
