@@ -78,7 +78,7 @@ class ComprarView(generic.edit.FormView):
         hora = form.cleaned_data['hora_de_entrega'].strftime('%I:%M %p')
         mail_to = Producto.objects.get(pk=self.kwargs['pk']).vendedor.email
         msg = 'Vendiste -' + Producto.objects.get(pk=self.kwargs['pk']).nombre + '- en Gugif. Precio: ' + precio +  '. Comprador: ' + comprador + '. Teléfono: ' + telefono + '. Destinatario: ' + destinatario + '. Dirección de entrega: ' + direccion + '. Fecha y hora de entrega: ' + fecha + ' a las ' + hora
-        send_mail('de Gugif: ¡Tienes una venta!', msg, 'yamilandreslima@gmail.com', [mail_to])
+        send_mail('¡Tienes una venta!', msg, 'Gugif <info@gugif.com>', [mail_to])
         form.save()
         return super().form_valid(form)
 

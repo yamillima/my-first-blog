@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 ]
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'yamilandreslima@gmail.com'
+EMAIL_HOST_USER = 'info@gugif.com'
 EMAIL_HOST_PASSWORD = 'Y1.075.228.142'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
